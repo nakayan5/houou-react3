@@ -1,0 +1,154 @@
+
+/* 共通部分ここから */
+.contents {
+    padding-top: 20px;
+}
+.inner {
+    width: 960px;
+    margin: 0 auto;
+}
+.c-section {
+    margin: 0 auto 60px auto;
+}
+ul {
+    list-style: none;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+li {
+    display: inline-block;
+}
+.module_spacer_vs {
+    margin: 10px 0;
+}
+.module_spacer_ss {
+    margin: 0 20px;
+}
+
+
+/* Headerここから */
+.header-container {
+    margin: 0;
+}
+
+/* スライダーここから */
+.top-slider-wrap {
+    margin-bottom: 60px;
+}
+.top-slider.inner {
+    width: auto;
+    /* margin: 0 auto; */
+}
+.slider_img_container {
+    margin: 0 auto;
+}
+/* .slider_img_list {
+    /* margin: 0 40px; */
+    /* padding: 0 40px; */
+/* } */
+/* .slider_img {
+    margin: 0 100px;
+    padding: 0 100px;
+} */
+
+/* Homeここから */
+.items-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.items-container ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+.items-container div:nth-child(n + 11) {
+    display: none;
+}
+.btn-more {
+    margin-top: 20px;
+    margin: 20px 10px 0 auto;
+}
+
+
+/* itemDetailここから */
+.detail-container {
+    padding: 30px;
+    background-color: #f2f2f2;
+}
+.item_detail {
+    display: flex;
+    /* margin: 50px 0px; */
+}
+.item_detail_wrap {
+    margin-top: 50px;
+}
+.triangle {
+    cursor: pointer;
+    display: inline;
+}
+.review {
+    margin: 60px 0;
+}
+.review h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+}
+
+
+/* itemSearchここから */
+.search_elements {
+    display: flex;
+    margin: 60px 0;
+}
+.c-section_search {
+    width: 75%
+}
+.c-section_search h1 {
+    margin-top: 0;
+}
+.search {
+    display: flex;
+    flex-wrap: wrap;
+}
+.sidebar {
+    text-align: center;
+    width: 20%;
+    margin-right: 5%;
+}
+/* .p_media__thumb {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+.p_media__thumb::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+.p_media__thumb > img {
+    position: absolute;
+    object-fit: cover;
+    object-position: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+} */
+
+
+
+/* brandここから */
+.brand-container {
+    background-image: linear-gradient(-225deg, #2cd8d5 2%, #9891ff 56%, #ffbac3 100%);
+    padding: 80px 30px;
+    margin-bottom: 80px;
+}
+.brand-container h2 {
+    margin-top: 0;
+    border-bottom: 1px solid white;
+}
+
+/* cartlistここから */
