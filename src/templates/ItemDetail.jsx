@@ -13,9 +13,17 @@ import StarIcon from '@material-ui/icons/Star';
 // import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     image: {
         marginRight: '50px'
+    },
+    item_detail: {
+        [theme.breakpoints.up('sm')]: {
+            display: 'flex'
+        },
+        [theme.breakpoints.down('sm')]: {
+            display: 'block'
+        }
     },
     text: {
         fontWeight: 'bold'
@@ -39,22 +47,25 @@ const useStyles = makeStyles({
     price: {
         fontSize: '30px'
     },
-    btn: {
-        display: 'flex',
-        justifyContent: 'center',
-        textAlign: 'center',
-        margin: '0 auto',
-        position: 'relative'
+    btn_container: {
+        [theme.breakpoints.up('sm')]: {
+            display: 'flex',
+            justifyContent: 'center',
+            textAlign: 'center',
+            margin: '0 auto',
+            position: 'relative'
+        }
     },
-    cart: {
-
+    btn: {
+        margin: '1rem',
+        minWidth: '170px'
     },
     star: {
         fontSize: '35px',
         color: '#ccc',
         marginRight: '10px'
     }
-})
+}))
 
 // const target = document.querySelector('.detail-container')
 // const options = {
@@ -148,19 +159,23 @@ const ItemDetail = () => {
             <div className='inner'>
                 <div className='detail-container'>
                     {item && (
-                        <div className='item_detail'>
+                        <div className={classes.item_detail}>
                             <div className={classes.image}><img src={`/static/images/cards/${id}.png`} alt=""/></div>
                             <div className={classes.text}>
                                 <h1 className={classes.name}>{item.name}</h1>
                                 <p className={classes.brand}>BRAND: {item.brand}</p>
                                 <p className={classes.size}>Size: <li className={classes.size_btn}>S</li> <li className={classes.size_btn}>M</li> <li className={classes.size_btn}>L</li> </p>
                                 <p className={classes.price}>￥{item.price}</p>
-                                <div className={classes.btn}>
-                                    <div className='module_spacer_ss'></div>
+                                <div className={classes.btn_container}>
+                                    {/* <div className='module_spacer_ss'></div> */}
                                     {/* <ShoppingCartIcon /> */}
-                                    <PrimaryButton label='カートに追加する' onClick={addItemsC} />
+                                    <div className={classes.btn}>
+                                        <PrimaryButton label='カートに追加する' onClick={addItemsC} />
+                                    </div>
                                     <div className='module_spacer_ss'></div>
-                                    <WhiteButton label='お気に入りに入れる' onClick={addItemsF} />
+                                    <div className={classes.btn} >
+                                        <WhiteButton label='お気に入りに入れる' onClick={addItemsF}/>
+                                    </div>
                                 </div>
                                 <h4 onClick={() => textAccordionHandler()}><p className='triangle'>▼</p> 商品の説明を見る</h4>
                                 <p>{text ? (item.text) : ('')}</p>
