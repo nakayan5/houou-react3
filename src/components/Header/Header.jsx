@@ -25,76 +25,76 @@ import {fetchItemsInCart, fetchItemsInFavorites} from '../../reducks/items/opera
 import { Category } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
+    grow: {
+      flexGrow: 1,
+    },
     header: {
         backgroundColor: 'white'
     },
-  grow: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-      marginLeft: '30px',
+    menuButton: {
+        marginRight: theme.spacing(2),
     },
-    cursor: 'pointer'
-  },
-  search: {
-    position: 'relative',
-    border: '1px solid #e8e8e8',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+    title: {
+        display: 'none',
+        [theme.breakpoints.up('sm')]: {
+        display: 'block',
+        marginLeft: '30px',
+        },
+        cursor: 'pointer'
     },
-    marginRight: theme.spacing(1),
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(5),
-      width: 'auto',
+    search: {
+        position: 'relative',
+        border: '1px solid #e8e8e8',
+        borderRadius: theme.shape.borderRadius,
+        backgroundColor: fade(theme.palette.common.white, 0.15),
+        '&:hover': {
+        backgroundColor: fade(theme.palette.common.white, 0.25),
+        },
+        marginRight: theme.spacing(1),
+        marginLeft: 0,
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+        marginLeft: theme.spacing(5),
+        width: 'auto',
+        },
     },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    cursor: 'pointer'
-  },
-  inputRoot: {
-    color: 'inherit',
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '20ch',
+    searchIcon: {
+        padding: theme.spacing(0, 2),
+        height: '100%',
+        position: 'absolute',
+        pointerEvents: 'none',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        cursor: 'pointer'
     },
-  },
-  cart: {
-    margin: '0 0 0 auto'
-  },
-  favorite: {
-    margin: '0 20px'
-  },
-  logo: {
-    width: '130px',
-    display: 'block',
-    cursor: 'pointer',
-    [theme.breakpoints.up('sm')]: {
-        marginRight: '40px'
+    inputRoot: {
+        color: 'inherit',
+    },
+    inputInput: {
+        padding: theme.spacing(1, 1, 1, 0),
+        // vertical padding + font size from searchIcon
+        paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+        transition: theme.transitions.create('width'),
+        width: '100%',
+        [theme.breakpoints.up('md')]: {
+        width: '20ch',
+        },
+    },
+    cart: {
+        margin: '0 0 0 auto'
+    },
+    favorite: {
+        margin: '0 20px'
+    },
+    logo: {
+        width: '130px',
+        display: 'block',
+        cursor: 'pointer',
+        [theme.breakpoints.up('sm')]: {
+            marginRight: '40px'
+        }
     }
-  }
 }));
 
 const Header = () => {
@@ -227,48 +227,48 @@ const Header = () => {
 
     return (
         <div className={classes.grow}>
-        <AppBar position="static" className={classes.header}>
-            <div className='inner'>
-                <Toolbar className='header-container'>
-                    <img src={LogoNINCO} onClick={() => dispatch(push('/'))} className={classes.logo} />
-                    <Typography className={classes.title} variant="h6" noWrap onClick={() => dispatch(push('/search/?gender=men'))}>
-                        MEN
-                    </Typography>
-                    <Typography className={classes.title} variant="h6" noWrap onClick={() => dispatch(push('/search/?gender=woman'))}>
-                        WOMAN
-                    </Typography>
-                    <Typography className={classes.title} variant="h6" noWrap onClick={() => dispatch(push('/search/?gender=kids'))}>
-                        KIDS
-                    </Typography>
-                    <div className={classes.search}>
-                        <div className={classes.searchIcon} >
-                            <SearchIcon />
+            <AppBar position="static" className={classes.header}>
+                <div className='inner'>
+                    <Toolbar className='header-container'>
+                        <img src={LogoNINCO} onClick={() => dispatch(push('/'))} className={classes.logo} />
+                        <Typography className={classes.title} variant="h6" noWrap onClick={() => dispatch(push('/search/?gender=men'))}>
+                            MEN
+                        </Typography>
+                        <Typography className={classes.title} variant="h6" noWrap onClick={() => dispatch(push('/search/?gender=woman'))}>
+                            WOMAN
+                        </Typography>
+                        <Typography className={classes.title} variant="h6" noWrap onClick={() => dispatch(push('/search/?gender=kids'))}>
+                            KIDS
+                        </Typography>
+                        <div className={classes.search}>
+                            <div className={classes.searchIcon} >
+                                <SearchIcon />
+                            </div>
+                            <InputBase
+                                placeholder="Search…" inputProps={{ 'aria-label': 'search' }}
+                                classes={{
+                                    root: classes.inputRoot,
+                                    input: classes.inputInput,
+                                }}
+                                onChange={inputKeyword} value={keyword} type={'text'} 
+                            />
                         </div>
-                        <InputBase
-                            placeholder="Search…" inputProps={{ 'aria-label': 'search' }}
-                            classes={{
-                                root: classes.inputRoot,
-                                input: classes.inputInput,
-                            }}
-                            onChange={inputKeyword} value={keyword} type={'text'} 
-                        />
-                    </div>
-                    
-                    <div className={classes.cart}>
-                        <IconButton >
-                            <Badge badgeContent={itemsInFavorites.length} color='secondary' onClick={() => dispatch(push('/favorites'))} >
-                                <FavoriteBorderIcon />
-                            </Badge>
-                        </IconButton>
-                        <IconButton>
-                            <Badge badgeContent={itemsInCart.length} color='secondary' onClick={() => dispatch(push('/cart'))} >
-                                <ShoppingCartIcon/>
-                            </Badge>
-                        </IconButton>
-                    </div>
-                </Toolbar>
-            </div>
-        </AppBar>
+                        
+                        <div className={classes.cart}>
+                            <IconButton >
+                                <Badge badgeContent={itemsInFavorites.length} color='secondary' onClick={() => dispatch(push('/favorites'))} >
+                                    <FavoriteBorderIcon />
+                                </Badge>
+                            </IconButton>
+                            <IconButton>
+                                <Badge badgeContent={itemsInCart.length} color='secondary' onClick={() => dispatch(push('/cart'))} >
+                                    <ShoppingCartIcon/>
+                                </Badge>
+                            </IconButton>
+                        </div>
+                    </Toolbar>
+                </div>
+            </AppBar>
         {renderMobileMenu}
         {renderMenu}
         </div>
