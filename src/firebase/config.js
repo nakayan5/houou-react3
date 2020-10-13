@@ -1,5 +1,7 @@
 const firebaseConfig = {
+
     apiKey: "APIkeyが入ります",
+
     authDomain: "houou-react.firebaseapp.com",
     databaseURL: "https://houou-react.firebaseio.com",
     projectId: "houou-react",
