@@ -23,9 +23,7 @@ const useStyles = makeStyles((theme) => ({
             width: '20%',
             marginRight: '5%',
         },
-        // [theme.breakpoints.down('sm')]: {
             margin: '0 auto'
-        // },
     },
     c_section_search: {
         margin: '0 auto 60px auto',
