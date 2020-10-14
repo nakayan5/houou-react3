@@ -57,6 +57,9 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: theme.spacing(5),
         width: 'auto',
         },
+        [theme.breakpoints.down('sm')]: {
+            width: '125px'
+        }
     },
     searchIcon: {
         padding: theme.spacing(0, 2),
@@ -66,7 +69,10 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        [theme.breakpoints.down('sm')]: {
+            padding: theme.spacing(0, 1)
+        }
     },
     inputRoot: {
         color: 'inherit',
@@ -88,12 +94,16 @@ const useStyles = makeStyles((theme) => ({
         margin: '0 20px'
     },
     logo: {
-        width: '130px',
+        [theme.breakpoints.up('sm')]: {
+            marginRight: '40px',
+            width: '130px',
+        },
+        [theme.breakpoints.down('sm')]: {
+            width: '70px',
+            marginRight: '15px'
+        },
         display: 'block',
         cursor: 'pointer',
-        [theme.breakpoints.up('sm')]: {
-            marginRight: '40px'
-        }
     }
 }));
 
