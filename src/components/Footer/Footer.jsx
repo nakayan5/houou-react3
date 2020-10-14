@@ -18,9 +18,6 @@ const useStyles = makeStyles((theme) => ({
         margin: 0,
     },
     list: {
-        // [theme.breakpoints.up('sm')]: {
-        //     display: 'flex'
-        // },
         textAlign: 'center',
         padding: 0,
         margin: 0,
@@ -29,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
     icon: {
         [theme.breakpoints.up('sm')]: {
             margin: '20px'
+        },
+        [theme.breakpoints.down('sm')]: {
+            margin: '10px'
         }
     }
 

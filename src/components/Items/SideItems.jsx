@@ -24,12 +24,18 @@ const useStyles = makeStyles((theme) => ({
     },
     media: {
         width: '200px',
-        // height: '200px',
+        height: '200px',
         // paddig: '20px',
         // position: 'relative',
         // overflow: 'hidden',
         
     },
+    content: {
+        [theme.breakpoints.down('sm')]: {
+            display: 'none'
+            // width: 10
+        }
+    }
 }))
 
 const SideItems = (props) => {
@@ -45,7 +51,7 @@ const SideItems = (props) => {
             />
 
             {/* </div> */}
-            <CardContent>
+            <CardContent className={classes.content}>
                 <Typography color='textSecondary' component='p' className={classes.text}>
                     {props.name}
                 </Typography>
