@@ -51,13 +51,13 @@ const Sidebar = (props) => {
         <div className={classes.root}>
         <Divider />
         <List component="nav" aria-label="secondary mailbox folders">
-            <h3>GENDER</h3>
+            <h3 style={{textAlign: 'center'}}>GENDER</h3>
             {categories.map((category) => (
                 <ListItem button key={category.id} onClick={(e) => category.func(e, category.value)}>
                     <ListItemText primary={category.label} className={classes.text}/>
                 </ListItem>
             ))}
-            <h3>BRAND</h3>
+            <h3 style={{textAlign: 'center'}}>BRAND</h3>
             {brands.map((brand) => (
                 <ListItem button key={brand.id}>
                     <ListItemText primary={brand.label} className={classes.text}/>
