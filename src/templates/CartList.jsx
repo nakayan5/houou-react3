@@ -3,8 +3,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getItemsInCart } from '../reducks/items/selectors'
 import List from '@material-ui/core/List';
 import {CartListItem} from '../components/Items/index'
-// import { PrimaryButton, GreyButton } from '../components/UIkit'
-// import {push} from 'connected-react-router'
 import { makeStyles } from '@material-ui/styles'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
@@ -32,7 +30,6 @@ const useStyles = makeStyles({
 
 const CartList = () => {
     const classes = useStyles();
-    // const dispatch = useDispatch()
     const selector = useSelector((state) => state)
     const itemsInCart = getItemsInCart(selector)  // productInCartは商品情報が入っている配列
     // const array = itemsInCart.map(item => {
