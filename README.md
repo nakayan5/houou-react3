@@ -6,13 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ・Material UI
 
-・Firebase Authentication, Firebase Cloud Firestore, Firebase Hosting, Firebase Functions
+・Firebase Cloud Firestore, Firebase Hosting, Firebase Functions
 
  ## 機能
-
-・認証機能
-
-・いいね
+・いいねに追加/削除
 
 ・カートに追加/削除
 
