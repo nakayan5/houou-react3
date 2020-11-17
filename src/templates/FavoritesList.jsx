@@ -1,5 +1,5 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React,{useCallback} from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import {getItemsInFavorites} from '../reducks/items/selectors'
 import {Items} from '../components/Items/index'
 import { makeStyles } from '@material-ui/styles'
@@ -12,9 +12,13 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const FavoritesList = () => {
+    const deleteButton = true;
     const classes = useStyles()
     const selector = useSelector(state => state)
     const favoriteItems = getItemsInFavorites(selector)
+
+    
+
 
     return (
         <div className='inner'>
@@ -25,7 +29,7 @@ const FavoritesList = () => {
                             favoriteItems.map(item => (
                                 <Items
                                     name={item.name} key={item.id} price={item.price} 
-                                    id={item.id} category={item.category}
+                                    id={item.id} category={item.category} deleteButton={deleteButton}
                                 />
                             ))
                         )}

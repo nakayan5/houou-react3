@@ -30,11 +30,6 @@ export const fetchCategory = (gender, str) => {
         itemsRef.doc('items').get().then(snapshots => {
             const data = snapshots.data()
             const list = data.item  // [{}, {}, {}...]
-            // const name = /シャツ/
-            // const str = '/'+name+'/g'
-            // console.log(name);
-            // const regex = '"' +  list[0].text + '"'; 
-            // console.log(regex.test(str));
             if (gender !== '') {
                 const genderCategoryList = list.filter(item => {
                     if (item["category"] === gender) return true
@@ -56,7 +51,6 @@ export const fetchCategory = (gender, str) => {
 export const addItemToCart = (addedItems) => {
     return async (dispatch) => {
         const cartRef = itemsRef.doc('items').collection('cart').doc()
-        // addedItems['id'] = cartRef.id
         await cartRef.set(addedItems)
         dispatch(push('/'))
     }
@@ -67,6 +61,20 @@ export const addFavoriteItem = (addedItems) => {
         const favRef = itemsRef.doc('items').collection('favorites').doc()
         await favRef.set(addedItems)
         dispatch(push('/'))
+    }
+}
+
+export const deleteItemFromFavorite = (number) => {
+    return async(dispatch, getState) => {
+        const favRef = itemsRef.doc('items').collection('favorites').doc()
+        const id = favRef.id
+        itemsRef.doc('items').collection('favorites').doc(id).delete()
+            .then(() => {
+                const prevList = getState().items.favorites.list
+                const nextList = prevList.filter(favItem => favItem.id !== id)
+                console.log(nextList);
+            })
+        // console.log(l);
     }
 }
 
