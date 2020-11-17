@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useCallback} from 'react'
 import {useDispatch} from 'react-redux'
 import {push} from "connected-react-router"
 import {makeStyles} from '@material-ui/core/styles';
@@ -8,6 +8,7 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import {deleteItemFromFavorite} from '../../reducks/items/operations'
 
 // sm: 600px, 
 const useStyles = makeStyles((theme) => ({
@@ -40,6 +41,12 @@ const Items = (props) => {
     const classes = useStyles()
     const dispatch = useDispatch()
 
+
+    const deleteFavorite = useCallback(() => {
+        dispatch(deleteItemFromFavorite(props.id))
+    }, [])
+    
+
     return (
         <Card className={classes.root}>
             <CardMedia
@@ -58,6 +65,7 @@ const Items = (props) => {
                 <Typography color='textSecondary' component='p' className={classes.text}>
                     {props.text}
                 </Typography>
+                {props.deleteButton && <Typography onClick={deleteFavorite}>削除</Typography>}
             </CardContent>
         </Card>
     )
