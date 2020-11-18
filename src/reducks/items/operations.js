@@ -1,8 +1,17 @@
 import {db} from '../../firebase/index'
 import {push} from 'connected-react-router'
-import {fetchNewItemsAction, fetchMenItemsAction, fetchWomanItemsAction, fetchCategoryAction, fetchItemsInCartAction, fetchItemsInFavoritesAction} from './actions'
+import {fetchNewItemsAction, 
+        fetchMenItemsAction, 
+        fetchWomanItemsAction, 
+        fetchCategoryAction, 
+        fetchItemsInCartAction, 
+        fetchItemsInFavoritesAction,
+        deleteItemsInCartAction,
+        deleteItemsInFavoritesAction,
+    } from './actions'
 
 const itemsRef = db.collection('items')
+// docID と フィールドのIDは一致させた方が楽！
 
 export const fetchItems = () => {
     return async (dispatch) => {
@@ -66,15 +75,16 @@ export const addFavoriteItem = (addedItems) => {
 
 export const deleteItemFromFavorite = (number) => {
     return async(dispatch, getState) => {
-        const favRef = itemsRef.doc('items').collection('favorites').doc()
-        const id = favRef.id
-        itemsRef.doc('items').collection('favorites').doc(id).delete()
+        const snapshot = await itemsRef.doc('items').collection('favorites').where('id', '==', number).get()
+        const id = snapshot.docs.map(doc => doc.id)
+        itemsRef.doc('items').collection('favorites').doc(id[0]).delete()
             .then(() => {
-                const prevList = getState().items.favorites.list
-                const nextList = prevList.filter(favItem => favItem.id !== id)
-                console.log(nextList);
+                console.log('succesfully deleted');
+                dispatch(push('/'))
+            }).catch((err) => {
+                console.log('error' + err);
             })
-        // console.log(l);
+        
     }
 }
 

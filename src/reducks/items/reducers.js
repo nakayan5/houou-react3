@@ -33,7 +33,20 @@ export const ItemsReducer = (state = initialState.items, action) => {
                 ...state,
                 cart: [...action.payload]
             }
+
+        case Actions.DELETE_ITEMS_IN_CART:
+            return {
+                ...state,
+                cart: [...action.payload]
+            }
+
         case Actions.FETCH_ITEMS_IN_FAVORITES:
+            return {
+                ...state,
+                favorites: [...action.payload]
+            }
+
+        case Actions.DELETE_ITEMS_IN_FAVORITES:
             return {
                 ...state,
                 favorites: [...action.payload]

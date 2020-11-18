@@ -9,6 +9,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import {deleteItemFromFavorite} from '../../reducks/items/operations'
+import {db} from '../../firebase/index'
 
 // sm: 600px, 
 const useStyles = makeStyles((theme) => ({
@@ -43,7 +44,8 @@ const Items = (props) => {
 
 
     const deleteFavorite = useCallback(() => {
-        dispatch(deleteItemFromFavorite(props.id))
+        // db.collection('items').doc('items').collection('favorites').get()
+        dispatch(deleteItemFromFavorite(props.id))  
     }, [])
     
 

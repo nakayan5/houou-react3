@@ -111,7 +111,7 @@ const Header = () => {
     const dispatch = useDispatch()
     const selector = useSelector(state => state)
     let itemsInCart = getItemsInCart(selector)
-    const itemsInFavorites = getItemsInFavorites(selector)
+    let itemsInFavorites = getItemsInFavorites(selector)
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -201,9 +201,10 @@ const Header = () => {
                         case 'added':
                             itemsInCart.push(cartItems)    // firebaseのデータに存在する商品情報をstoreに入れる
                             break;
-                        case 'modified':
-                            const index = itemsInCart.findIndex(product => product.cartId === change.doc.id)
-                            itemsInCart[index] = cartItems
+                        // 今は使わない
+                        // case 'modified':
+                        //     const index = itemsInCart.findIndex(product => product.cartId === change.doc.id)
+                        //     itemsInCart[index] = cartItems
                         case 'removed':
                             itemsInCart = itemsInCart.filter(product => product.cartId !== change.doc.id)
                             break;
@@ -213,27 +214,36 @@ const Header = () => {
                 })
                 dispatch(fetchItemsInCart(itemsInCart)) // [{}, {}, {}...]
             })
-            return () => unsubscribe()    // useEffectのreturn時はcomponentWillUnMountと同様
+        return () => unsubscribe()    // useEffectのreturn時はcomponentWillUnMountと同様
     }, [])                             // returnでunsubscribe()を呼び出す / unsubscribeはcallbackの形で記述
     useEffect(() => {
-        const unsubscribe = db.collection('items').doc('items').collection('favorites')
+        return db.collection('items').doc('items').collection('favorites')
             .onSnapshot(snapshots => {  
-                snapshots.docChanges().forEach(change => {
+                snapshots.docChanges().forEach((change) => {
                     const favoriteItems = change.doc.data()   
+                    console.log(favoriteItems);
                     const changeType = change.type
                     if (changeType === 'added') {
                             itemsInFavorites.push(favoriteItems)    
-                    } else if (changeType === 'modified') {
-                        const index = itemsInFavorites.findIndex(product => product.cartId === change.doc.id)
-                        itemsInFavorites[index] = favoriteItems
-                    } else if (changeType === 'removed') {
+                    }
+                    // 今は使わない
+                    // if (changeType === 'modified') {
+                    //     const index = itemsInFavorites.findIndex(product => product.cartId === change.doc.id)
+                    //     itemsInFavorites[index] = favoriteItems
+                    // }
+                    if (changeType === 'removed') {
                         itemsInFavorites = itemsInFavorites.filter(product => product.cartId !== change.doc.id)
                     }
+                }, (err) => {
+                    console.log('error' + err);
                 })
                 dispatch(fetchItemsInFavorites(itemsInFavorites)) 
             })
-            return () => unsubscribe()  
-    }, [])                             
+    }, []) 
+    
+    useEffect(() => {
+        console.log(itemsInFavorites);
+    }, [])
 
     return (
         <div className={classes.grow}>

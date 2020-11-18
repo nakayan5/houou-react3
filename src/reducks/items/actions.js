@@ -44,3 +44,19 @@ export const fetchItemsInFavoritesAction = (items) => {
     }
 }
 
+export const DELETE_ITEMS_IN_FAVORITES = 'DELETE_ITEMS_IN_FAVORITES';
+export const deleteItemsInFavoritesAction = (items) => {
+    return {
+        type: 'DELETE_ITEMS_IN_FAVORITES',
+        payload: items
+    }
+}
+
+export const DELETE_ITEMS_IN_CART = 'DELETE_ITEMS_IN_CART'
+export const deleteItemsInCartAction = (items) => {
+    return {
+        type: 'DELETE_ITEMS_IN_CART',
+        payload: items
+    }
+}
+
